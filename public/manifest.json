@@ -3,12 +3,12 @@
   "name": "Urview",
   "icons": [
     {
-      "src": "../src/assets/UrView_192.png",
+      "src": "./UrView_192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "../src/assets/UrView_512.png",
+      "src": "./UrView_512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
