@@ -1,10 +1,15 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "UrView",
+  "name": "Urview",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "../assets/UrView_192.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../assets/UrView_512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
