@@ -1,0 +1,26 @@
+/* Component:: Card */
+.card {
+  width: 100%;
+  height: 100px;
+  margin: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 2px 7px 33px -12px rgba(0,0,0,0.4);
+  -moz-box-shadow: 2px 7px 33px -12px rgba(0,0,0,0.4);
+  box-shadow: 2px 7px 33px -12px rgba(0,0,0,0.4);
+}
+/* Component:: BackToTopButton */
+.search {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  -webkit-box-shadow: 2px 7px 33px -12px rgba(0,0,0,0.4);
+  -moz-box-shadow: 2px 7px 33px -12px rgba(0,0,0,0.4);
+  box-shadow: 2px 7px 33px -12px rgba(0,0,0,0.4);
+}
+.search img {
+  width: 30px;
+  height: 30px;
+  padding: 10px 0 0 8px;
+}
