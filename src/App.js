@@ -6,12 +6,12 @@ import {
 import './style/main.css';
 import Home from './Home';
 import Detail from './Detail';
-import GoogleServices from './googleConfig';
+// import GoogleServices from './googleConfig';
 
 class App extends Component {
   componentDidMount() {
-    const services = new GoogleServices().service;
-    console.log(services);
+    // const services = new GoogleServices().service;
+    // console.log(services);
   }
   render() {
     return (
