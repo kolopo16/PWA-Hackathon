@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
 import './style/main.css';
 import Topbar from './components/Topbar';
-import Card from './components/Card';
+// import Card from './components/Card';
+import Home from './Home';
+import Detail from './Detail';
 import GoogleServices from './googleConfig';
 
 
@@ -19,18 +25,13 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Topbar />
-        <div className="container">
-          <h2>Header</h2>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+      <Router>
+        <div>
+          <Topbar />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/detail/:id" component={Detail} />
         </div>
-      </div>
+      </Router>
     );
   }
 }
