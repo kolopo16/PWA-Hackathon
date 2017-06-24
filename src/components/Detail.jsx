@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DetailDesc from './components/DetailDesc';
-import GoogleServices from './googleConfig';
+import DetailDesc from './DetailDesc';
+import GoogleServices from '../googleConfig';
 
 class Detail extends Component {
 
