@@ -21,7 +21,7 @@ class Card extends Component {
 
 Card.propTypes = {
   name: PropTypes.string,
-  photo: PropTypes.object,
+  photo: PropTypes.string,
   address: PropTypes.string,
 }
 

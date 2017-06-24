@@ -48,7 +48,7 @@
   align-self: flex-start;
   padding-top: 2em;
   padding-bottom: .85em;
-  background: #ececec;
+  background: transparent;
   height: 180px;
   margin-bottom: 15px;
 }
