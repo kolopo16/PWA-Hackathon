@@ -4,18 +4,13 @@ import data from './dataDetail.json';
 import DetailDesc from './components/DetailDesc';
 
 class Detail extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   generateReviewCard(reviews) {
     return (
-      reviews.map((review, i) => {
-        return (
-          <div key={i}>
+      reviews.map((review, i) => (
+        <div key={i} className="layout-card">
+          <div className="card">
             <div className="card-profile-photo">
-              <img src={review.profile_photo_url} />
+              <img src={review.profile_photo_url} alt='profile-photo' />
             </div>
             <div className="card-author-name">
               {review.author_name}
@@ -28,8 +23,9 @@ class Detail extends Component {
               {review.text}
             </div>
           </div>
+        </div>
         )
-      })
+      )
     )
   }
 
@@ -53,7 +49,6 @@ class Detail extends Component {
           </div>
         </div>
       </div>
-
     )
   }
 

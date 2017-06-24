@@ -4,8 +4,9 @@ import {
   Route
 } from 'react-router-dom';
 import './style/main.css';
-import Topbar from './components/Topbar';
 import Icons from './components/Icons';
+import SearchBox from './components/SearchBox';
+import HamburgerMenu from './components/HamburgerMenu';
 import Home from './Home';
 import Detail from './Detail';
 import GoogleServices from './googleConfig';
@@ -15,12 +16,17 @@ class App extends Component {
     const services = new GoogleServices().service;
     console.log(services);
   }
-
+  getValue(v) {
+    console.log(v, 'value');
+  }
   render() {
     return (
       <Router>
         <div className="container">
-          <Topbar />
+          <div className="topbar">
+            <SearchBox onInputChange={v => this.getValue(v)}/>
+            <HamburgerMenu />
+          </div>
           <Icons />
           <Route exact path="/" component={Home} />
           <Route exact path="/detail/:id" component={Detail} />

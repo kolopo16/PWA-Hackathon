@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SearchBox extends Component {
   constructor() {
@@ -8,7 +9,9 @@ class SearchBox extends Component {
     };
   }
   onInputChange(e) {
-    this.setState({ keywords: e.target.value });
+    this.setState({ keywords: e.target.value }, () => {
+      this.props.onInputChange(this.state.keywords);
+    });
   }
 
   render() {
@@ -24,5 +27,9 @@ class SearchBox extends Component {
     );
   }
 }
+
+SearchBox.propTypes = {
+  onInputChange: PropTypes.func,
+};
 
 export default SearchBox;

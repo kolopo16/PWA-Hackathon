@@ -8,7 +8,7 @@ class Card extends Component {
       <div className="layout-card col-xs-12 col-sm-6 col-md-3 pull-left">
         <div className="card">
           <header className="card-header">{this.props.photo}</header>
-          {this.props.name}
+          <b>{this.props.name}</b>
           <br />
           <address>{this.props.address}</address>
         </div>
