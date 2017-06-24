@@ -7,6 +7,22 @@
 .hiding {
   display: none;
 }
+
+/* Component:: Icon */
+.levitate-bottom {
+  position: fixed;
+  z-index: 1;
+  bottom: 10%;
+  right: 1%;
+}
+.arrow-up {
+  border-bottom: 21px solid #ccc;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  width: 0;
+  height: 0;
+}
+
 /* Component:: Card */
 .layout-card {
   display: flex;
@@ -34,6 +50,7 @@
   padding-bottom: .85em;
   background: #ececec;
   height: 180px;
+  margin-bottom: 15px;
 }
 /* Component:: BackToTopButton */
 .search {
@@ -52,7 +69,7 @@
   position: fixed;
   z-index: 100;
   width: 100%;
-  background: #ececec;
+  background: #fff;
   height: 60px;
   border-bottom: 1px solid #e8e8e8;
   top: 0;
@@ -237,7 +254,7 @@ span::after {
     flex-basis: 25%;
     max-width: 25%;
   }
-  .hamburger-menu, .bg-menusม .menus-bar {
+  .bg-menus, .menus-bar {
     display: none;
   }
 }
@@ -248,11 +265,4 @@ span::after {
     padding-right: 1.25rem;
     padding-left: 1.25rem;
   }
-  .hamburger-menu {
-    display: none;
-  }
-}
-.test {
-  width: 100%;
-  margin: 0 auto;
 }

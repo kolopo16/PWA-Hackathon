@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Search from '../assets/Search.png';
 
-class BackToTopButton extends Component {
+class SearchButton extends Component {
   render() {
     return (
       <div className="search">
@@ -11,4 +11,4 @@ class BackToTopButton extends Component {
   }
 }
 
-export default BackToTopButton;
+export default SearchButton;

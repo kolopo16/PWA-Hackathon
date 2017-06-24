@@ -5,10 +5,10 @@ import {
 } from 'react-router-dom';
 import './style/main.css';
 import Topbar from './components/Topbar';
+import Icons from './components/Icons';
 import Home from './Home';
 import Detail from './Detail';
 import GoogleServices from './googleConfig';
-
 
 class App extends Component {
   componentDidMount() {
@@ -21,6 +21,7 @@ class App extends Component {
       <Router>
         <div className="container">
           <Topbar />
+          <Icons />
           <Route exact path="/" component={Home} />
           <Route exact path="/detail/:id" component={Detail} />
         </div>

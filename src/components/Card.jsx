@@ -10,7 +10,7 @@ class Card extends Component {
           <header className="card-header">{this.props.photo}</header>
           {this.props.name}
           <br />
-          <trimmed-address>{this.props.address}</trimmed-address>
+          <address>{this.props.address}</address>
         </div>
       </div>
     );
