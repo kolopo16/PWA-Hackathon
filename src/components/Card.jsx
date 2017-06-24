@@ -7,7 +7,9 @@ class Card extends Component {
     return (
       <div className="layout-card col-xs-12 col-sm-6 col-md-3 pull-left">
         <div className="card">
-          <header className="card-header">{this.props.photo}</header>
+          <header className="card-header">
+            <img src={this.props.photo} alt={this.props.name} />
+          </header>
           <b>{this.props.name}</b>
           <br />
           <address>{this.props.address}</address>
