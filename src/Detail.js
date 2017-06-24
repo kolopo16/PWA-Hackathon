@@ -7,7 +7,6 @@ class Detail extends Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props.match.params.id);
   }
 
   generateReviewCard(reviews) {
@@ -44,7 +43,7 @@ class Detail extends Component {
           Rating: {dataResult.rating}
         </div>
         <div className="detail-desc">
-          <DetailDesc />
+          <DetailDesc id={this.props.match.params.id}/>
         </div>
         <div className="detail-address">{dataResult.formatted_address}</div>
         <div className="detail-reviews">
@@ -60,7 +59,7 @@ class Detail extends Component {
 
   render() {
     return (
-      <div>
+      <div className="test" style={{ display: 'inline-block', marginTop: 60 }}>
         {this.generateDetail(data)}
       </div>
     )
