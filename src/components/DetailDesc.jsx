@@ -8,7 +8,7 @@ class DetailDesc extends Component {
     super(props);
 
     this.state = {
-      desc: null,
+      desc: '',
       isOpened: false,
     }
 
@@ -59,7 +59,7 @@ class DetailDesc extends Component {
         </div>
 
         <div className={`${isOpened ? 'showing' : 'hiding'} editor`}>
-          <textarea onChange={(e) => this.handleChange(e)} value={desc} ></textarea>
+          <textarea onChange={(e) => this.handleChange(e)} value={`${desc || ''}`} >-</textarea>
           <button onClick={() => this.saveDescEdit()}>Save</button>
           <button onClick={() => this.cancelEdit()}>Cancel</button>
         </div>
