@@ -11,6 +11,7 @@
 
 #firebase
 /src/firebaseConfig.js
+/src/googleConfig.js
 
 # misc
 .DS_Store
