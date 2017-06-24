@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import data from './dataDetail.json';
-import DetailDesc from './components/DetailDesc';
+import data from '../data/dataDetail.json';
+import DetailDesc from './DetailDesc';
 
 class Detail extends Component {
   generateReviewCard(reviews) {

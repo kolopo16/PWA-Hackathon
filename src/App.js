@@ -4,8 +4,8 @@ import {
   Route
 } from 'react-router-dom';
 import './style/main.css';
-import Home from './Home';
-import Detail from './Detail';
+import Home from './components/Home';
+import Detail from './components/Detail';
 import GoogleServices from './googleConfig';
 
 class App extends Component {

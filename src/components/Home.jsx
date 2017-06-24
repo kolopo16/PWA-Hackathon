@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import {
   Link
 } from 'react-router-dom';
-import Card from './components/Card';
-import data from './dataSearch.json';
-import Icons from './components/Icons';
-import SearchBox from './components/SearchBox';
-import HamburgerMenu from './components/HamburgerMenu';
+import Card from './Card';
+import data from '../data/dataSearch.json';
+import Icons from './Icons';
+import SearchBox from './SearchBox';
+import HamburgerMenu from './HamburgerMenu';
 
 class Home extends Component {
   getValue(v) {
