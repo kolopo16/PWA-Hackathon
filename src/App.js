@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './style/main.css';
-import BackToTopButton from './components/BackToTopButton';
 import Topbar from './components/Topbar';
 import Card from './components/Card';
 import googleServices from './googleConfig';
