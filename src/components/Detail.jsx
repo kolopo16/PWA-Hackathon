@@ -30,7 +30,7 @@ class Detail extends Component {
           <div key={i} className="layout-card">
             <div className="card">
               <div className="card-profile-photo">
-                <img src={review.profile_photo_url} alt='profile-photo' />
+                <img src={review.profile_photo_url} alt={review.author_name} />
               </div>
               <div className="card-author-name">
                 {review.author_name}
