@@ -12,7 +12,6 @@ class HamburgerMenu extends Component {
   }
   render() {
     const { isOpened } = this.state;
-    console.log(isOpened, 'isOpened');
     return (
       <div>
         <label className="hamburger-menu" htmlFor="hamburger-menu" onClick={() => this.toggleMenus()}>

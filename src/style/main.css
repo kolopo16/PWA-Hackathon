@@ -103,7 +103,6 @@
 .hamburger-menu {
   right: 0px;
   top: 0px;
-  display: block;
   position: fixed;
   overflow: hidden;
   margin: 0;
@@ -253,9 +252,6 @@ span::after {
     padding-left: 1.25rem;
     flex-basis: 25%;
     max-width: 25%;
-  }
-  .bg-menus, .menus-bar {
-    display: none;
   }
 }
 @media only screen and (min-width: 50em) {
