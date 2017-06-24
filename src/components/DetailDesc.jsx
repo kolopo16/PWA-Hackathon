@@ -17,22 +17,21 @@ class DetailDesc extends Component {
 
   componentWillMount() {
     this.database = firebaseConfig().database().ref('/places/' + this.props.id);
-    this.getSnapshot()
-
+    this.getSnapshot();
   }
 
   getSnapshot() {
     this.database.child('place_desc').once('value').then((snapshot) => {
       this.setState({
         desc: snapshot.val()
-      })
-    })
+      });
+    });
   }
 
   saveDescEdit() {
     this.database.set({
       place_desc: this.state.desc
-    })
+    });
     this.getSnapshot();
     this.toggleEdit();
   }
@@ -65,12 +64,12 @@ class DetailDesc extends Component {
           <button onClick={() => this.cancelEdit()}>Cancel</button>
         </div>
       </div>
-    )
+    );
   }
 }
 
 DetailDesc.propTypes = {
   id: PropTypes.string,
-}
+};
 
 export default DetailDesc;
