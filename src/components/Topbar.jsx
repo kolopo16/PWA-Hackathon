@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchBox from './SearchBox';
+import SearchBox from './SearchBox.jsx';
 
 class Topbar extends Component {
   render() {

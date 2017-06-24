@@ -4,8 +4,8 @@ class SearchBox extends Component {
   constructor() {
     super();
     this.state = {
-      keywords: ''
-    }
+      keywords: '',
+    };
   }
   onInputChange(e) {
     this.setState({ keywords: e.target.value });
@@ -18,8 +18,8 @@ class SearchBox extends Component {
           type="text"
           className="text-box"
           placeholder="SEARCH ..."
-          onChange={(e) => this.onInputChange(e)}
-          />
+          onChange={e => this.onInputChange(e)}
+        />
       </div>
     );
   }

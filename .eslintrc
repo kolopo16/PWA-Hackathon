@@ -1,0 +1,19 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+    ],
+    "env": {
+        "browser": true
+    },
+    "rules": {
+        "no-new": 0,
+        "quotes": [2, "single"],
+        "new-cap": [2, {
+          "newIsCap": true,
+          "capIsNew": false
+        }],
+        "class-methods-use-this": "off",
+        "import/extensions": 0
+    }
+}

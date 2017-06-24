@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
 import './style/main.css';
-import Topbar from './components/Topbar';
-import Card from './components/Card';
-import googleServices from './googleConfig';
+import Topbar from './components/Topbar.jsx';
+import Card from './components/Card.jsx';
+import GoogleServices from './googleConfig';
+
 
 class App extends Component {
-
   componentDidMount() {
+    const services = new GoogleServices().service;
+    console.log(services, 'app');
 
-    const services = new googleServices().service;
-    console.log(services,'app');
-    
     // service.textSearch({
     //   query: 'อุทยานแห่งชาติ'
     // }, function (places, status) {
     //   console.log('Place search:', places);
     // });
-
   }
 
   render() {
-    
-    
     return (
       <div>
         <Topbar />
