@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './style/main.css';
-import Topbar from './components/Topbar.jsx';
-import Card from './components/Card.jsx';
+import Topbar from './components/Topbar';
+import Card from './components/Card';
 import GoogleServices from './googleConfig';
 
 
 class App extends Component {
   componentDidMount() {
     const services = new GoogleServices().service;
-    console.log(services, 'app');
+    console.log(services);
 
     // service.textSearch({
     //   query: 'อุทยานแห่งชาติ'

@@ -2,12 +2,22 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
+        # "./node_modules/eslint-config-airbnb-base/index.js"
     ],
+    "plugins": [
+        "import",
+        "react"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
     "env": {
         "browser": true
     },
     "rules": {
         "no-new": 0,
+        "no-console": 0,
         "quotes": [2, "single"],
         "new-cap": [2, {
           "newIsCap": true,
