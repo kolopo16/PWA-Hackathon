@@ -27,7 +27,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="test" style={{ display: 'inline-block', marginTop: 60 }}>
         {this.generateCards(data)}
       </div>
     )
