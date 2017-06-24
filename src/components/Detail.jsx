@@ -49,6 +49,16 @@ class Detail extends Component {
     )
   }
 
+  generatePhotos(photos) {
+    if(photos) {
+      return (
+        photos.map((photo,i) => {
+          console.log(photo.getUrl({maxWidth: 640}), i);
+        })
+      )
+    }
+  }
+
   generateDetail(data) {
     if(data){
       return (
@@ -60,6 +70,9 @@ class Detail extends Component {
           </div>
           <div className="detail-desc">
             <DetailDesc id={this.props.match.params.id}/>
+          </div>
+          <div className="detail-photos">
+            {this.generatePhotos(data.photos)}
           </div>
           <div className="detail-address">{data.formatted_address}</div>
           <div className="detail-reviews">
