@@ -8,21 +8,63 @@ class DetailDesc extends Component {
     super(props);
 
     this.state = {
-      desc: null
+      desc: null,
+      isOpened: false,
     }
+
+    this.database = null;
   }
 
   componentWillMount() {
-    const database = firebaseConfig().database().ref('/places/' + this.props.id);
-    database.once('value').then((snapshot) => {
-      console.log(snapshot.val());
+    this.database = firebaseConfig().database().ref('/places/' + this.props.id);
+    this.getSnapshot()
+
+  }
+
+  getSnapshot() {
+    this.database.child('place_desc').once('value').then((snapshot) => {
+      this.setState({
+        desc: snapshot.val()
+      })
     })
   }
 
+  saveDescEdit() {
+    this.database.set({
+      place_desc: this.state.desc
+    })
+    this.getSnapshot();
+    this.toggleEdit();
+  }
+
+  handleChange(e) {
+    this.setState({desc: e.target.value});
+  }
+
+  toggleEdit() {
+    this.setState({ isOpened: !this.state.isOpened });
+  }
+
+  cancelEdit() {
+    this.getSnapshot();
+    this.toggleEdit();
+  }
 
   render() {
+    const { isOpened, desc } = this.state;
     return (
-      <div></div>
+      <div>
+        <div className={`${isOpened ? 'hiding' : 'showing'}`}>
+          {desc}
+          <a onClick={() => this.toggleEdit()}> Edit</a>
+        </div>
+
+        <div className={`${isOpened ? 'showing' : 'hiding'} editor`}>
+          <textarea onChange={(e) => this.handleChange(e)} value={desc} ></textarea>
+          <button onClick={() => this.saveDescEdit()}>Save</button>
+          <button onClick={() => this.cancelEdit()}>Cancel</button>
+        </div>
+      </div>
     )
   }
 }
