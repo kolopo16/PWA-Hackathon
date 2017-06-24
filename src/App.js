@@ -7,12 +7,11 @@ import './style/main.css';
 import Home from './components/Home';
 import Detail from './components/Detail';
 
-
 class App extends Component {
-  componentDidMount() {
-    // const services = new GoogleServices().service;
-    // console.log(services);
+  constructor() {
+    super();
   }
+
   render() {
     return (
       <Router>

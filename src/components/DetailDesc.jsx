@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import firebaseConfig from '../firebaseConfig';
+import FirebaseConfig from '../firebaseConfig';
 
 class DetailDesc extends Component {
 
@@ -10,14 +10,25 @@ class DetailDesc extends Component {
     this.state = {
       desc: '',
       isOpened: false,
+      isAdm: false,
     }
 
     this.database = null;
   }
 
   componentWillMount() {
-    this.database = firebaseConfig().database().ref('/places/' + this.props.id);
+    const firebaseObj = new FirebaseConfig();
+    
+    const currentUser = firebaseObj.GetCurrentUser();
+    currentUser.then((user) => {
+      if(firebaseObj.adm.indexOf(user.uid) >= 0) {
+        this.setState({isAdm: true});
+      }
+    })
+
+    this.database = firebaseObj.firebase.database().ref('/places/' + this.props.id);
     this.getSnapshot();
+
   }
 
   getSnapshot() {
@@ -50,15 +61,15 @@ class DetailDesc extends Component {
   }
 
   render() {
-    const { isOpened, desc } = this.state;
+    const { isOpened, desc, isAdm } = this.state;
     return (
       <div>
-        <div className={`${isOpened ? 'hiding' : 'showing'}`}>
+        <div className={`${!isOpened && isAdm ? 'showing' : 'hiding'}`}>
           {desc}
           <a onClick={() => this.toggleEdit()}> Edit</a>
         </div>
 
-        <div className={`${isOpened ? 'showing' : 'hiding'} editor`}>
+        <div className={`${isOpened && isAdm ? 'showing' : 'hiding'} editor`}>
           <textarea onChange={(e) => this.handleChange(e)} value={`${desc || ''}`} >-</textarea>
           <button onClick={() => this.saveDescEdit()}>Save</button>
           <button onClick={() => this.cancelEdit()}>Cancel</button>
