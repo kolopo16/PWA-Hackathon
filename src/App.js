@@ -4,14 +4,13 @@ import {
   Route
 } from 'react-router-dom';
 import './style/main.css';
-import Home from './components/Home';
-import Detail from './components/Detail';
-import GoogleServices from './googleConfig';
+import Home from './Home';
+import Detail from './Detail';
 
 class App extends Component {
   componentDidMount() {
-    const services = new GoogleServices().service;
-    console.log(services);
+    // const services = new GoogleServices().service;
+    // console.log(services);
   }
   render() {
     return (
