@@ -7,6 +7,31 @@
 .hiding {
   display: none;
 }
+.text-logo {
+  font-weight: bold;
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  font-size: 19px;
+}
+.circle-1 {
+  position: absolute;
+  top: 27px;
+  left: 97px;
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  background: #0079af;
+}
+.circle-2 {
+  position: absolute;
+  top: 29px;
+  left: 89px;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background: #17b7ff;
+}
 .btn {
   cursor: pointer;
   width: 72px;

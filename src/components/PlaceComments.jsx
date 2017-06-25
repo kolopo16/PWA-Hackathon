@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FirebaseConfig from '../firebaseConfig';
@@ -69,18 +70,19 @@ class PlaceComments extends Component {
   }
 
   generatePlaceComments(comments) {
-    if(comments) {
+    if(comments.length) {
       return (
         comments.map((comment, i) => {
           return (
             <div key={i}>
               <div className="user-photo">
-                <img src={comment.user.photoURL} alt={comment.user.displayName} />
+                <img style={{ borderRadius: '50%' }} src={comment.user.photoURL} alt={comment.user.displayName} />
               </div>
               <div className="user-name">
                 {comment.user.displayName}
               </div>
               <div className="user-comment">
+                <div className="text-emphasize">''</div>
                 {comment.comment}
               </div>
             </div>
@@ -88,6 +90,7 @@ class PlaceComments extends Component {
         })
       )
     }
+    return <div> No review </div>
   }
 
   render() {
@@ -106,6 +109,7 @@ class PlaceComments extends Component {
           </div>
         </div>
         <div>
+          <div style={{ fontSize: '1.5em', display: 'block' }}>UrView Reviews</div>
           {this.generatePlaceComments(data)}
         </div>
       </div>
