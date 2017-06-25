@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DetailDesc from './DetailDesc';
@@ -26,37 +27,44 @@ class Detail extends Component {
   }
 
   generateReviewCard(reviews) {
-    return (
-      reviews.map((review, i) => {
-        return (
-          <div key={i} className="layout-card pull-left">
-            <div className="card">
-              <div className="card-profile-photo">
-                <img src={review.profile_photo_url} alt={review.author_name} />
-              </div>
-              <div className="card-author-name">
-                {review.author_name}
-              </div>
-              <div className="card-time">
-                {review.relative_time_description}
-                <RatingBar rating={review.rating}/>
-                {review.rating}
-              </div>
-              <div className="card-text">
-                {review.text}
+    if(reviews) {
+      return (
+        reviews.map((review, i) => {
+          return (
+            <div key={i} className={`${ i%2 || 'odd' } layout-card-detail pull-left`}>
+              <div className="card-detail">
+                <div className="card-profile-photo">
+                  <img src={review.profile_photo_url} alt={review.author_name} />
+                </div>
+                <div className="card-author-name">
+                  {review.author_name}
+                </div>
+                <div className="card-time">
+                  <RatingBar rating={review.rating}/>
+                  {review.relative_time_description}
+                </div>
+                <div className="card-text">
+                  <div className="text-emphasize">''</div>
+                  <div className="text-simple">{review.text}</div>
+                </div>
               </div>
             </div>
-          </div>
-        )
-      })
-    )
+          )
+        })
+      )
+    }
   }
 
   generatePhotos(photos) {
     if(photos) {
       return (
         photos.map((photo,i) => {
-          console.log(photo.getUrl({maxWidth: 640}), i);
+          return (
+            <div key={i} style={{ display: 'inline-block' }} >
+              <img style={{ width: 300, height: 200, float: 'left', paddingRight: 9 }} src={photo.getUrl({maxWidth: 640})} alt={i}/>
+            </div>
+          )
+          // console.log(photo.getUrl({maxWidth: 640}), i);
         })
       )
     }
@@ -68,13 +76,13 @@ class Detail extends Component {
         <div>
           <div className="detail-header">
             <h1>{data.name}</h1>
-            <br/>
             <RatingBar rating={data.rating} />
             Rating: {data.rating}
           </div>
           <div className="detail-desc">
             <DetailDesc id={this.props.match.params.id}/>
           </div>
+          <br/>
           <div className="detail-photos">
             {this.generatePhotos(data.photos)}
           </div>

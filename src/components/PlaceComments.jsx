@@ -99,10 +99,10 @@ class PlaceComments extends Component {
             <img src={user.photoURL} alt={user.displayName} />
           </div>
           <div className="review-user-name">{user.displayName}</div>
-          <div className="review-user-input">
-            <textarea placeholder="Add comment.." onChange={(e) => this.handleChange(e)} value={`${post || ''}`} ></textarea>
-            <button onClick={() => this.PostComment()}>Post</button>
-            <button onClick={() => this.ClearComment()}>Clear</button>
+          <textarea placeholder="ADD COMMENT.." onChange={(e) => this.handleChange(e)} value={`${post || ''}`} ></textarea>
+          <div className="review-user-input" style={{ display: 'flex' }}>
+            <button className="btn btn-primary" onClick={() => this.PostComment()}>POST</button>
+            <button className="btn btn-secondary" onClick={() => this.ClearComment()}>CLEAR</button>
           </div>
         </div>
         <div>

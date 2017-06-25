@@ -12,8 +12,13 @@ import HomeHero from '../assets/images/filipp-romanovskij.jpg';
 import FacebookLogo from '../assets/images/FacebookLogo.png';
 import FacebookLogined from '../assets/images/FacebookLogined.png';
 
-const stylesBtnFB = {
-  position: 'absolute', right: 20, top: 18, width: 28, cursor: 'pointer'
+const styles = {
+  stylesBtnFB: {
+    position: 'absolute', right: 20, top: 15, width: 21, cursor: 'pointer'
+  },
+  LoginLable: {
+    position: 'absolute', top: 35, right: 11, fontSize: 12, fontWeight: 'bold'
+  }
 }
 
 class Home extends Component {
@@ -55,11 +60,17 @@ class Home extends Component {
   LoginWithFB() {
     if (!this.state.email) {
       return (
-        <img src={FacebookLogo} style={stylesBtnFB} onClick={() => this.handleSignIn()} />
+        <div>
+          <img src={FacebookLogo} style={styles.stylesBtnFB} onClick={() => this.handleSignIn()} />
+          <div style={styles.LoginLable}>LOGIN</div>
+        </div>
       );
     } else {
       return (
-        <img src={FacebookLogined} style={stylesBtnFB} onClick={() => {this.handleSignOut()}} />
+        <div>
+          <img src={FacebookLogined} style={styles.stylesBtnFB} onClick={() => {this.handleSignOut()}} />
+          <div style={styles.LoginLable}>LOGOUT</div>
+        </div>
       );
     }
   }
