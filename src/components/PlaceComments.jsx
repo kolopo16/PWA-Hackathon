@@ -77,16 +77,18 @@ class PlaceComments extends Component {
       return (
         comments.map((comment, i) => {
           return (
-            <div key={i}>
-              <div className="user-photo">
-                <img style={{ borderRadius: '50%' }} src={comment.user.photoURL} alt={comment.user.displayName} />
-              </div>
-              <div className="user-name">
-                {comment.user.displayName}
-              </div>
-              <div className="user-comment">
-                <div className="text-emphasize">''</div>
-                {comment.comment}
+            <div key={i} className={`${ i%2 || 'odd' } layout-card-detail pull-left`}>
+              <div className="card-detail">
+                <div className="card-profile-photo">
+                  <img style={{ borderRadius: '50%' }} src={comment.user.photoURL} alt={comment.user.displayName} />
+                </div>
+                <div className="card-author-name">
+                  {comment.user.displayName}
+                </div>
+                <div className="card-text">
+                  <div className="text-emphasize">''</div>
+                  <div className="text-simple">{comment.comment}</div>
+                </div>
               </div>
             </div>
           )
@@ -101,8 +103,8 @@ class PlaceComments extends Component {
     return (
       <div>
         <div style={{ display: 'inline-block', width: '100%' }}>
-          <div className="padding-font" style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBotto: 19, marginTop: 19 }}>UrView Reviews</div>
-          <div className="padding-font" style={{ paddingBottom: 20 }}>{this.generatePlaceComments(data)}</div>
+          <div className="padding-font" style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBottom: 19, marginTop: 19 }}>UrView Reviews</div>
+          <div style={{ paddingBottom: 20 }}>{this.generatePlaceComments(data)}</div>
         </div>
         <div className={`${user.email ? 'showing' : 'hiding'} add-review`} style={{ width: '100%' }}>
           <div className="review-user-photo">
