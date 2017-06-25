@@ -24,6 +24,15 @@ class FirebaseConfig {
     return new Promise((resolve, reject) => {
       firebase.auth().onAuthStateChanged((user) => {
         if(user) {
+          //set users to DB
+          firebase.database().ref('/users').child(user.uid).set({
+            displayName : user.displayName,
+            email : user.email,
+            photoURL : user.photoURL,
+            providerId : user.providerData[0].providerId,
+            uid : user.uid,
+          });
+
           resolve(user);
         }
       });

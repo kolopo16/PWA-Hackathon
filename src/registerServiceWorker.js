@@ -9,12 +9,16 @@
 // This link also includes instructions on opting out of this behavior.
 /* eslint-disable */
 export default function register() {
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  if (process.env.NODE_ENV === 'development' && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       navigator.serviceWorker
         .register(swUrl)
         .then(registration => {
+
+          // swRegistration = registration;
+          // initialiseUI();
+
           registration.onupdatefound = () => {
             const installingWorker = registration.installing;
             installingWorker.onstatechange = () => {
@@ -40,7 +44,34 @@ export default function register() {
         });
     });
   }
+
+  // function initialiseUI() {
+  //   // Set the initial subscription value
+  //   swRegistration.pushManager.getSubscription()
+  //   .then(function(subscription) {
+  //     isSubscribed = !(subscription === null);
+  //
+  //     if (isSubscribed) {
+  //       console.log('User IS subscribed.');
+  //     } else {
+  //       console.log('User is NOT subscribed.');
+  //     }
+  //
+  //     updateBtn();
+  //   });
+  // }
+  //
+  // function updateBtn() {
+  //   if (isSubscribed) {
+  //     pushButton.textContent = 'Disable Push Messaging';
+  //   } else {
+  //     pushButton.textContent = 'Enable Push Messaging';
+  //   }
+  //
+  //   pushButton.disabled = false;
+  // }
 }
+
 
 export function unregister() {
   if ('serviceWorker' in navigator) {
