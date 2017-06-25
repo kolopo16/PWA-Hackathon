@@ -68,9 +68,12 @@ class PlaceComments extends Component {
     });
 
   }
-
+  ClearComment() {
+    this.setState({post: ''});
+  }
   generatePlaceComments(comments) {
-    if(comments.length) {
+    console.log(comments, 'kool');
+    if(comments) {
       return (
         comments.map((comment, i) => {
           return (
@@ -97,20 +100,20 @@ class PlaceComments extends Component {
     const { user, data, post } = this.state;
     return (
       <div>
-        <div className={`${user.email ? 'showing' : 'hiding'} add-review`}>
+        <div>
+          <div style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBotto: 19, marginTop: 19 }}>UrView Reviews</div>
+          <div style={{ paddingBottom: 20 }}>{this.generatePlaceComments(data)}</div>
+        </div>
+        <div className={`${user.email ? 'showing' : 'hiding'} add-review`} style={{ width: '100%' }}>
           <div className="review-user-photo">
             <img src={user.photoURL} alt={user.displayName} />
+            <div className="review-user-name">{`${user.displayName} says:`}</div>
           </div>
-          <div className="review-user-name">{user.displayName}</div>
           <textarea placeholder="ADD COMMENT.." onChange={(e) => this.handleChange(e)} value={`${post || ''}`} ></textarea>
           <div className="review-user-input" style={{ display: 'flex' }}>
             <button className="btn btn-primary" onClick={() => this.PostComment()}>POST</button>
             <button className="btn btn-secondary" onClick={() => this.ClearComment()}>CLEAR</button>
           </div>
-        </div>
-        <div>
-          <div style={{ fontSize: '1.5em', display: 'block' }}>UrView Reviews</div>
-          {this.generatePlaceComments(data)}
         </div>
       </div>
     );

@@ -83,14 +83,14 @@ class Detail extends Component {
           <div className="detail-desc">
             <DetailDesc id={this.props.match.params.id}/>
           </div>
+          <div className="detail-address">{data.formatted_address}</div>
           <br/>
           <div className="detail-photos">
             {this.generatePhotos(data.photos)}
           </div>
-          <div className="detail-address">{data.formatted_address}</div>
           <div className="detail-reviews">
             <div className="review-card">
-              <div style={{ fontSize: '1.5em', display: 'block' }}>Google Reviews</div>
+              <div style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBottom: 19, marginTop: 19 }}>Google Reviews</div>
               {this.generateReviewCard(data.reviews)}
             </div>
             <PlaceComments id={this.props.match.params.id}/>

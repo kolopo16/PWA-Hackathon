@@ -2,7 +2,7 @@
   padding: 10px;
 }
 .showing {
-  display: block;
+  display: inline-block;
 }
 .hiding {
   display: none;
@@ -38,7 +38,7 @@
   height: 37px;
   outline: none;
   border: 1px solid #fff;
-  margin-left: 8px;
+  margin-right: 8px;
   color: #fff;
   font-size: 12px;
   border-radius: 3px;
@@ -73,12 +73,15 @@
   border: 1px solid #151515;
 }
 textarea {
-  width: 500px;
+  width: 100%;
   border: 1px solid #000;
   border-radius: 2px;
   height: 104px;
   outline: none;
   font-size: 16px;
+}
+.editor {
+  width: 100%;
 }
 /* Component:: Home */
 .home-hero {
@@ -389,6 +392,9 @@ span::after {
   flex-wrap: wrap;
   justify-content: center;
 }
+.detail-header, .detail-address, .detail-reviews, .detail-desc {
+  padding: 0 30px;
+}
 
 @keyframes animateDot1 {
   0%{ transform: rotate(0deg) translateX(-12px); }
@@ -429,6 +435,9 @@ span::after {
     font-size: 1em;
     left: calc(50% - 176px);
     top: 63%;
+  }
+  .detail-header, .detail-address, .detail-reviews, .detail-desc {
+    padding: 0 54px;
   }
 }
 @media only screen and (min-width: 50em) {
