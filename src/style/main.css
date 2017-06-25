@@ -446,6 +446,9 @@ span::after {
   .detail-header, .detail-address, .detail-reviews, .detail-desc {
     padding: 0 54px;
   }
+  .padding-font {
+    padding: 0;
+  }
 }
 @media only screen and (min-width: 50em) {
   .col-sm-6 {
