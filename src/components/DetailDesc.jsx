@@ -20,10 +20,8 @@ class DetailDesc extends Component {
     const firebaseObj = new FirebaseConfig();
 
     const currentUser = firebaseObj.GetCurrentUser();
-    currentUser.then((user) => {
-      if(firebaseObj.adm.indexOf(user.uid) >= 0) {
-        this.setState({isAdm: true});
-      }
+    currentUser.then(() => {
+      this.setState({isAdm: true});
     })
 
     this.database = firebaseObj.firebase.database().ref('/places/' + this.props.id);

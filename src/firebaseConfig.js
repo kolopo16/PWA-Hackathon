@@ -17,7 +17,7 @@ class FirebaseConfig {
     }
 
     this.firebase = firebase;
-    this.adm = ['fGOO9EyEbEWSaqejwup8iRxxEy53'];
+    // this.adm = ['fGOO9EyEbEWSaqejwup8iRxxEy53'];
   }
 
   GetCurrentUser() {

@@ -108,7 +108,7 @@ class Home extends Component {
           <div className="font-primary">UrView</div>
           <div className="font-secondary">REVIEW YOU EXPERIENCES OF INTERESTING PLACES.</div>
         </div>
-        <div style={{ display: 'inline-block', marginTop: 60, left: '5%',  right: '5%', position: 'absolute', top: '100%' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: 60, justifyContent: 'center' }}>
           {this.generateCards(this.state.data || dataSearch.results)}
         </div>
       </div>
