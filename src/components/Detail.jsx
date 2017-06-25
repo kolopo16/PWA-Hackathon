@@ -75,7 +75,7 @@ class Detail extends Component {
       return (
         <div>
           <div className="detail-header">
-            <h1>{data.name}</h1>
+            <h3>{data.name}</h3>
             <RatingBar rating={data.rating} />
             Rating: {data.rating}
           </div>

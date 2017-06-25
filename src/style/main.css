@@ -28,10 +28,10 @@
 }
 .font-primary {
   position: absolute;
-  top: 42%;
-  font-size: 50px;
+  top: 39%;
+  font-size: 4em;
   color: #fff;
-  left: calc(50% - 90px);
+  left: calc(50% - 105px);
   font-weight: bold;
 }
 .font-secondary {
@@ -385,9 +385,9 @@ span::after {
     max-width: 25%;
   }
   .font-secondary {
-    font-size: 14px;
+    font-size: 1em;
     left: calc(50% - 176px);
-    top: 57%;
+    top: 63%;
   }
 }
 @media only screen and (min-width: 50em) {
