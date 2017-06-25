@@ -76,22 +76,36 @@ class Home extends Component {
 
   generateCards(data) {
     if(data) {
-      return (
-        data.map((item) => {
-          if(item.photos) {
-            return (
-              <Link to={`/detail/${item.place_id}`} key={item.place_id}>
-                <Card
-                  name={item.name}
-                  photo={(item.photos[0].raw_reference) ? item.photos[0].raw_reference.fife_url : item.photos[0].getUrl({maxWidth: 640})}
-                  address={item.formatted_address}
-                />
-              </Link>
-            )
-          }
-        })
-      )
+      let returnCount = 0;
+      let returns = data.map((item) => {
+        if(item.photos) {
+          returnCount++;
+          return (
+            <Link to={`/detail/${item.place_id}`} key={item.place_id}>
+              <Card
+                name={item.name}
+                photo={(item.photos[0].raw_reference) ? item.photos[0].raw_reference.fife_url : item.photos[0].getUrl({maxWidth: 640})}
+                address={item.formatted_address}
+              />
+            </Link>
+          )
+        }
+      })
+      if(returnCount!==0) {
+        return returns;
+      } else {
+        return (
+          <div className="not-found">
+            Not found
+          </div>
+        )
+      }
     }
+    return (
+      <div className="not-found">
+        Not found
+      </div>
+    )
   }
 
   render() {
@@ -107,7 +121,10 @@ class Home extends Component {
           <div className="font-secondary">REVIEW YOU EXPERIENCES OF INTERESTING PLACES.</div>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: 60, justifyContent: 'center' }}>
-          {this.generateCards(this.state.data || dataSearch.results)}
+          {this.generateCards(this.state.data || dataSearch.results) || `
+            <div className="not-found">
+              Not found
+            </div>`}
         </div>
       </div>
     )
