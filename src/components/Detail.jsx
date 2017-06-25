@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DetailDesc from './DetailDesc';
+import PlaceComments from './PlaceComments';
 import GoogleServices from '../googleConfig';
 
 class Detail extends Component {
@@ -76,6 +77,7 @@ class Detail extends Component {
           </div>
           <div className="detail-address">{data.formatted_address}</div>
           <div className="detail-reviews">
+            <PlaceComments id={this.props.match.params.id}/>
             <div className="review-card">
               <h2>Google Reviews</h2>
               {this.generateReviewCard(data.reviews)}

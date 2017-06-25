@@ -18,7 +18,7 @@ class DetailDesc extends Component {
 
   componentWillMount() {
     const firebaseObj = new FirebaseConfig();
-    
+
     const currentUser = firebaseObj.GetCurrentUser();
     currentUser.then((user) => {
       if(firebaseObj.adm.indexOf(user.uid) >= 0) {
@@ -64,9 +64,10 @@ class DetailDesc extends Component {
     const { isOpened, desc, isAdm } = this.state;
     return (
       <div>
-        <div className={`${!isOpened && isAdm ? 'showing' : 'hiding'}`}>
+        <div className={`${!isOpened ? 'showing' : 'hiding'}`}>
           {desc}
-          <a onClick={() => this.toggleEdit()}> Edit</a>
+          <a onClick={() => this.toggleEdit()}
+             className={`${isAdm ? 'showing' : 'hiding'}`}> Edit</a>
         </div>
 
         <div className={`${isOpened && isAdm ? 'showing' : 'hiding'} editor`}>
