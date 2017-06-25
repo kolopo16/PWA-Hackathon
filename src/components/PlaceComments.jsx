@@ -103,7 +103,7 @@ class PlaceComments extends Component {
     return (
       <div>
         <div style={{ display: 'inline-block', width: '100%' }}>
-          <div className="padding-font" style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBottom: 19, marginTop: 19 }}>UrView Reviews</div>
+          <div style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBottom: 19, marginTop: 19 }}>UrView Reviews</div>
           <div style={{ paddingBottom: 20 }}>{this.generatePlaceComments(data)}</div>
         </div>
         <div className={`${user.email ? 'showing' : 'hiding'} add-review`} style={{ width: '100%' }}>

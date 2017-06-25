@@ -90,7 +90,7 @@ class Detail extends Component {
           </div>
           <div className="detail-reviews">
             <div className="review-card">
-              <div className="padding-font" style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBottom: 19, marginTop: 19 }}>Google Reviews</div>
+              <div style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBottom: 19, marginTop: 19 }}>Google Reviews</div>
               {this.generateReviewCard(data.reviews)}
             </div>
             <PlaceComments id={this.props.match.params.id}/>
