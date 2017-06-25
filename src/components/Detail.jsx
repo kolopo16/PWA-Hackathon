@@ -63,7 +63,7 @@ class Detail extends Component {
         photos.map((photo,i) => {
           return (
             <div key={i} style={{ display: 'inline-block' }} >
-              <img style={{ width: 300, height: 200, float: 'left', paddingRight: 9 }} src={photo.getUrl({maxWidth: 640})} alt={i}/>
+              <img className='detail-photo' src={photo.getUrl({maxHeight: 480})} alt={i}/>
             </div>
           )
           // console.log(photo.getUrl({maxWidth: 640}), i);
@@ -111,7 +111,7 @@ class Detail extends Component {
             <div style={{ position: 'absolute', top: 35, right: 21, fontSize: 12, fontWeight: 'bold', color: '#000' }}>HOME</div>
           </a>
         </div>
-        <div style={{ display: 'inline-block', marginTop: 60 }}>
+        <div style={{ display: 'inline-block', marginTop: 60, width: '100%' }}>
           {this.generateDetail(this.state.data)}
         </div>
       </div>
