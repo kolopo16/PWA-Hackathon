@@ -392,7 +392,7 @@ span::after {
   flex-wrap: wrap;
   justify-content: center;
 }
-.detail-header, .detail-address, .detail-reviews, .detail-desc {
+.detail-header, .detail-address, .detail-desc, .padding-font {
   padding: 0 30px;
 }
 
