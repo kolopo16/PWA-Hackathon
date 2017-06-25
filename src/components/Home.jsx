@@ -44,7 +44,6 @@ class Home extends Component {
     services.textSearch({
       query: v
     }, (places, status) => {
-      console.log(places);
       (status !== googlestatus.OK) || this.setState({ data: places })
     })
   }
@@ -77,7 +76,6 @@ class Home extends Component {
 
   generateCards(data) {
     if(data) {
-      console.log(data);
       return (
         data.map((item) => {
           if(item.photos) {

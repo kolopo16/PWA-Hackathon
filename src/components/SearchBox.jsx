@@ -10,12 +10,18 @@ class SearchBox extends Component {
     };
   }
 
+
   onInputChange(e) {
+    this.setState({ keywords: e.target.value })
     if(e.charCode === 13) {
-      this.setState({ keywords: e.target.value }, () => {
-        this.props.onInputChange(this.state.keywords);
-      });
+      this.props.onInputChange(this.state.keywords);
     }
+  }
+
+  onClickSearch(keywords) {
+    this.setState({ keywords: keywords }, () => {
+      this.props.onInputChange(this.state.keywords);
+    });
   }
 
   render() {
@@ -31,7 +37,7 @@ class SearchBox extends Component {
           placeholder=""
           onKeyPress={e => this.onInputChange(e)}
         />
-      <button className="btn-search">SEARCH</button>
+      <button className="btn-search" onClick={() => this.onClickSearch(this.state.keywords)}>SEARCH</button>
       </div>
     );
   }
