@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import FirebaseConfig from '../firebaseConfig';
 import Card from './Card';
-// import dataSearch from '../data/dataSearch.json';
+import dataSearch from '../data/dataSearch.json';
 import Icons from './Icons';
 import SearchBox from './SearchBox';
 import GoogleServices from '../googleConfig';
@@ -78,6 +78,7 @@ class Home extends Component {
 
   generateCards(data) {
     if(data) {
+      console.log(data);
       return (
         data.map((item) => {
           if(item.photos) {
@@ -85,7 +86,7 @@ class Home extends Component {
               <Link to={`/detail/${item.place_id}`} key={item.place_id}>
                 <Card
                   name={item.name}
-                  photo={item.photos[0].getUrl({maxWidth: 640})}
+                  photo={(item.photos[0].raw_reference) ? item.photos[0].raw_reference.fife_url : item.photos[0].getUrl({maxWidth: 640})}
                   address={item.formatted_address}
                 />
               </Link>
@@ -111,7 +112,7 @@ class Home extends Component {
           <div>Galll dskkx dksmxkx xskss</div>
         </div>
         <div style={{ display: 'inline-block', marginTop: 60 }}>
-          {this.generateCards(this.state.data)}
+          {this.generateCards(this.state.data || dataSearch.results)}
         </div>
       </div>
     )
