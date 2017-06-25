@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import FirebaseConfig from '../firebaseConfig';
 import Card from './Card';
-import dataSearch from '../data/dataSearch.json';
+// import dataSearch from '../data/dataSearch.json';
 import Icons from './Icons';
 import SearchBox from './SearchBox';
 import GoogleServices from '../googleConfig';
@@ -45,6 +45,7 @@ class Home extends Component {
     services.textSearch({
       query: v
     }, (places, status) => {
+      console.log(places);
       (status !== googlestatus.OK) || this.setState({ data: places })
     })
   }
@@ -79,15 +80,17 @@ class Home extends Component {
     if(data) {
       return (
         data.map((item) => {
-          return (
-            <Link to={`/detail/${item.place_id}`} key={item.place_id}>
-              <Card
-                name={item.name}
-                photo={item.photos[0].raw_reference.fife_url}
-                address={item.formatted_address}
-              />
-            </Link>
-          )
+          if(item.photos) {
+            return (
+              <Link to={`/detail/${item.place_id}`} key={item.place_id}>
+                <Card
+                  name={item.name}
+                  photo={item.photos[0].getUrl({maxWidth: 640})}
+                  address={item.formatted_address}
+                />
+              </Link>
+            )
+          }
         })
       )
     }
@@ -108,7 +111,7 @@ class Home extends Component {
           <div>Galll dskkx dksmxkx xskss</div>
         </div>
         <div style={{ display: 'inline-block', marginTop: 60 }}>
-          {this.generateCards(dataSearch.results)}
+          {this.generateCards(this.state.data)}
         </div>
       </div>
     )
