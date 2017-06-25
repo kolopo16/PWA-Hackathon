@@ -175,7 +175,7 @@ header img {
   float: left;
   color: #5e82a6;
   letter-spacing: 2px;
-  width: 7%;
+  /*width: 7%;*/
 }
 .text-simple {
   font-weight: bold;
