@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import {
   Link
 } from 'react-router-dom';
+import FirebaseConfig from '../firebaseConfig';
 import Card from './Card';
 import dataSearch from '../data/dataSearch.json';
 import Icons from './Icons';
 import SearchBox from './SearchBox';
-import HamburgerMenu from './HamburgerMenu';
 import GoogleServices from '../googleConfig';
+import HomeHero from '../assets/images/filipp-romanovskij.jpg';
+import FacebookLogo from '../assets/images/FacebookLogo.png';
+import FacebookLogined from '../assets/images/FacebookLogined.png';
+
+const stylesBtnFB = {
+  position: 'absolute', right: 20, top: 18, width: 28, cursor: 'pointer'
+}
 
 class Home extends Component {
 
@@ -16,6 +23,14 @@ class Home extends Component {
     this.state = {
       data: null,
     };
+  }
+
+  componentDidMount() {
+    const firebaseObj = new FirebaseConfig();
+    const currentUser = firebaseObj.GetCurrentUser();
+    currentUser.then((user) => {
+      this.setState({email: user.email})
+    })
   }
 
   getValue(v) {
@@ -29,9 +44,28 @@ class Home extends Component {
     })
   }
 
+  handleSignOut() {
+    this.setState({email: ''}, () => {
+      new FirebaseConfig().SignOut()
+    })
+  }
+  handleSignIn() {
+     new FirebaseConfig().FacebookAuth();
+  }
+  LoginWithFB() {
+    if (!this.state.email) {
+      return (
+        <img src={FacebookLogo} style={stylesBtnFB} onClick={() => this.handleSignIn()} />
+      );
+    } else {
+      return (
+        <img src={FacebookLogined} style={stylesBtnFB} onClick={() => {this.handleSignOut()}} />
+      );
+    }
+  }
+
   generateCards(data) {
     if(data) {
-      console.log(data);
       return (
         data.map((item) => {
           return (
@@ -53,11 +87,16 @@ class Home extends Component {
       <div>
         <div className="topbar">
           <SearchBox onInputChange={v => this.getValue(v)}/>
-          <HamburgerMenu />
+          {this.LoginWithFB()}
         </div>
         <Icons />
+        <div className="home-hero" style={{ height: window.innerHeight }}>
+          <img src={HomeHero} />
+          <div>UrView</div>
+          <div>Galll dskkx dksmxkx xsk</div>
+          <div>Galll dskkx dksmxkx xskss</div>
+        </div>
         <div style={{ display: 'inline-block', marginTop: 60 }}>
-          {/* {this.generateCards(this.state.data)} */}
           {this.generateCards(dataSearch.results)}
         </div>
       </div>

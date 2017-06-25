@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DetailDesc from './DetailDesc';
 import GoogleServices from '../googleConfig';
+import RatingBar from './RatingBar';
 
 class Detail extends Component {
 
@@ -27,7 +28,7 @@ class Detail extends Component {
     return (
       reviews.map((review, i) => {
         return (
-          <div key={i} className="layout-card">
+          <div key={i} className="layout-card pull-left">
             <div className="card">
               <div className="card-profile-photo">
                 <img src={review.profile_photo_url} alt={review.author_name} />
@@ -37,7 +38,8 @@ class Detail extends Component {
               </div>
               <div className="card-time">
                 {review.relative_time_description}
-                ({review.rating})
+                <RatingBar rating={review.rating}/>
+                {review.rating}
               </div>
               <div className="card-text">
                 {review.text}
@@ -66,6 +68,7 @@ class Detail extends Component {
           <div className="detail-header">
             <h1>{data.name}</h1>
             <br/>
+            <RatingBar rating={data.rating} />
             Rating: {data.rating}
           </div>
           <div className="detail-desc">

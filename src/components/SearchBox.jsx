@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import MagnifyingGlass from '../assets/images/Search.png';
 
 class SearchBox extends Component {
   constructor() {
@@ -8,6 +9,7 @@ class SearchBox extends Component {
       keywords: '',
     };
   }
+
   onInputChange(e) {
     if(e.charCode === 13) {
       this.setState({ keywords: e.target.value }, () => {
@@ -19,12 +21,17 @@ class SearchBox extends Component {
   render() {
     return (
       <div className="search-box">
+        <img style={{ position: 'absolute', width: 25, top: 17 }}
+          src={MagnifyingGlass}
+        />
+        <label className="search-label">Search all reviewed !</label>
         <input
           type="text"
           className="text-box"
-          placeholder="SEARCH ..."
+          placeholder=""
           onKeyPress={e => this.onInputChange(e)}
         />
+      <button className="btn-search">SEARCH</button>
       </div>
     );
   }
