@@ -5,7 +5,6 @@ import DetailDesc from './DetailDesc';
 import PlaceComments from './PlaceComments';
 import GoogleServices from '../googleConfig';
 import RatingBar from './RatingBar';
-import SearchBox from './SearchBox';
 import HomePage from '../assets/images/HomePage.png';
 
 class Detail extends Component {
@@ -84,17 +83,17 @@ class Detail extends Component {
           <div className="detail-desc">
             <DetailDesc id={this.props.match.params.id}/>
           </div>
+          <div className="detail-address">{data.formatted_address}</div>
           <br/>
           <div className="detail-photos">
             {this.generatePhotos(data.photos)}
           </div>
-          <div className="detail-address">{data.formatted_address}</div>
           <div className="detail-reviews">
-            <PlaceComments id={this.props.match.params.id}/>
             <div className="review-card">
-              <div style={{ fontSize: '1.5em', display: 'block' }}>Google Reviews</div>
+              <div style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBottom: 19, marginTop: 19 }}>Google Reviews</div>
               {this.generateReviewCard(data.reviews)}
             </div>
+            <PlaceComments id={this.props.match.params.id}/>
           </div>
         </div>
       )
@@ -105,7 +104,9 @@ class Detail extends Component {
     return (
       <div>
         <div className="topbar">
-          <SearchBox onInputChange={v => this.getValue(v)}/>
+          <div className="text-logo">UrView</div>
+          <div className="circle-1"></div>
+          <div className="circle-2"></div>
           <a href="/">
             <img src={HomePage} style={{ position: 'absolute', right: 29, top: 16, width: 22 }} />
             <div style={{ position: 'absolute', top: 35, right: 21, fontSize: 12, fontWeight: 'bold', color: '#000' }}>HOME</div>
