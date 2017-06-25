@@ -26,30 +26,32 @@ class Detail extends Component {
   }
 
   generateReviewCard(reviews) {
-    return (
-      reviews.map((review, i) => {
-        return (
-          <div key={i} className="layout-card pull-left">
-            <div className="card">
-              <div className="card-profile-photo">
-                <img src={review.profile_photo_url} alt={review.author_name} />
-              </div>
-              <div className="card-author-name">
-                {review.author_name}
-              </div>
-              <div className="card-time">
-                {review.relative_time_description}
-                <RatingBar rating={review.rating}/>
-                {review.rating}
-              </div>
-              <div className="card-text">
-                {review.text}
+    if(reviews) {
+      return (
+        reviews.map((review, i) => {
+          return (
+            <div key={i} className="layout-card pull-left">
+              <div className="card">
+                <div className="card-profile-photo">
+                  <img src={review.profile_photo_url} alt={review.author_name} />
+                </div>
+                <div className="card-author-name">
+                  {review.author_name}
+                </div>
+                <div className="card-time">
+                  {review.relative_time_description}
+                  <RatingBar rating={review.rating}/>
+                  {review.rating}
+                </div>
+                <div className="card-text">
+                  {review.text}
+                </div>
               </div>
             </div>
-          </div>
-        )
-      })
-    )
+          )
+        })
+      )
+    }
   }
 
   generatePhotos(photos) {
