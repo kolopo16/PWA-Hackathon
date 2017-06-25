@@ -94,7 +94,7 @@ class PlaceComments extends Component {
     const { user, data, post } = this.state;
     return (
       <div>
-        <div className="add-review">
+        <div className={`${user.email ? 'showing' : 'hiding'} add-review`}>
           <div className="review-user-photo">
             <img src={user.photoURL} alt={user.displayName} />
           </div>
