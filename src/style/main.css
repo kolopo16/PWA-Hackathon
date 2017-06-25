@@ -26,6 +26,22 @@
   border: 1px solid #151515;
   color: #000;
 }
+.font-primary {
+  position: absolute;
+  top: 42%;
+  font-size: 50px;
+  color: #fff;
+  left: calc(50% - 90px);
+  font-weight: bold;
+}
+.font-secondary {
+  position: absolute;
+  top: 60%;
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  left: calc(50% - 157px);
+  font-weight: bold;
+}
 .btn:hover {
   background: #fff;
   color: #151515;
@@ -367,6 +383,11 @@ span::after {
     padding-left: 1.25rem;
     flex-basis: 25%;
     max-width: 25%;
+  }
+  .font-secondary {
+    font-size: 14px;
+    left: calc(50% - 176px);
+    top: 57%;
   }
 }
 @media only screen and (min-width: 50em) {

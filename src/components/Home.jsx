@@ -5,7 +5,6 @@ import {
 import FirebaseConfig from '../firebaseConfig';
 import Card from './Card';
 import dataSearch from '../data/dataSearch.json';
-import Icons from './Icons';
 import SearchBox from './SearchBox';
 import GoogleServices from '../googleConfig';
 import HomeHero from '../assets/images/filipp-romanovskij.jpg';
@@ -104,12 +103,10 @@ class Home extends Component {
           <SearchBox onInputChange={v => this.getValue(v)}/>
           {this.LoginWithFB()}
         </div>
-        <Icons />
         <div className="home-hero" style={{ height: window.innerHeight }}>
           <img src={HomeHero} />
-          <div>UrView</div>
-          <div>Galll dskkx dksmxkx xsk</div>
-          <div>Galll dskkx dksmxkx xskss</div>
+          <div className="font-primary">UrView</div>
+          <div className="font-secondary">REVIEW YOU EXPERIENCES OF INTERESTING PLACES.</div>
         </div>
         <div style={{ display: 'inline-block', marginTop: 60 }}>
           {this.generateCards(this.state.data || dataSearch.results)}
