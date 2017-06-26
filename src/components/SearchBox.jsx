@@ -13,13 +13,13 @@ class SearchBox extends Component {
 
   onInputChange(e) {
     this.setState({ keywords: e.target.value })
-    if(e.charCode === 13) {
+    if (e.charCode === 13) {
       this.props.onInputChange(this.state.keywords);
     }
   }
 
-  onClickSearch(keywords) {
-    this.setState({ keywords: keywords }, () => {
+  onClickSearch(keyword) {
+    this.setState({ keywords: keyword }, () => {
       this.props.onInputChange(this.state.keywords);
     });
   }
@@ -30,14 +30,14 @@ class SearchBox extends Component {
         <img style={{ position: 'absolute', width: 25, top: 17 }}
           src={MagnifyingGlass}
         />
-        <label className="search-label">Search all reviewed !</label>
+        <label className="search-label">Search all reviewes !</label>
         <input
           type="text"
           className="text-box"
           placeholder=""
           onKeyPress={e => this.onInputChange(e)}
         />
-      <button className="btn-search" onClick={() => this.onClickSearch(this.state.keywords)}>SEARCH</button>
+        <button className="btn-search" onClick={() => this.onClickSearch(this.state.keywords)}>SEARCH</button>
       </div>
     );
   }

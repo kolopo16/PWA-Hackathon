@@ -26,7 +26,7 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      data: null,
+      data: '',
     };
   }
 
@@ -34,7 +34,7 @@ class Home extends Component {
     const firebaseObj = new FirebaseConfig();
     const currentUser = firebaseObj.GetCurrentUser();
     currentUser.then((user) => {
-      this.setState({email: user.email})
+      this.setState({ email: user.email })
     })
   }
 
@@ -50,22 +50,17 @@ class Home extends Component {
   }
 
   handleSignOut() {
-    this.setState({email: ''}, () => {
+    this.setState({ email: '' }, () => {
       new FirebaseConfig().SignOut()
     })
   }
+
   handleSignIn() {
-     new FirebaseConfig().FacebookAuth();
+    new FirebaseConfig().FacebookAuth();
   }
+
   LoginWithFB() {
-    if (!this.state.email) {
-      return (
-        <div>
-          <img src={FacebookLogo} style={styles.stylesBtnFB} onClick={() => this.handleSignIn()} />
-          <div style={styles.LoginLable}>LOGIN</div>
-        </div>
-      );
-    } else {
+    if (this.state.email) {
       return (
         <div>
           <img src={FacebookLogined} style={styles.stylesBtnFB} onClick={() => {this.handleSignOut()}} />
@@ -73,10 +68,16 @@ class Home extends Component {
         </div>
       );
     }
+    return (
+      <div>
+        <img src={FacebookLogo} style={styles.stylesBtnFB} onClick={() => this.handleSignIn()} />
+        <div style={styles.LoginLable}>LOGIN</div>
+      </div>
+    );
   }
 
   generateCards(data) {
-    if(data) {
+    if (data) {
       let returnCount = 0;
       let tempData = data.map((item) => {
         if(item.photos) {
@@ -94,15 +95,10 @@ class Home extends Component {
       })
       if (returnCount!==0) {
         return tempData;
-      } else {
-        return (
-          <NotFound />
-        )
       }
+      return ( <NotFound /> );
     }
-    return (
-      <NotFound />
-    )
+    return ( <NotFound /> );
   }
 
   render() {
@@ -115,7 +111,7 @@ class Home extends Component {
         <div className="home-hero" style={{ height: window.innerHeight }}>
           <img src={HomeHero} />
           <div className="font-primary">UrView</div>
-          <div className="font-secondary">REVIEW YOU EXPERIENCES OF INTERESTING PLACES.</div>
+          <div className="font-secondary">REVIEW YOUR EXPERIENCES OF INTERESTING PLACES.</div>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: 60, justifyContent: 'center' }}>
           {this.generateCards(this.state.data || dataSearch.results) || <NotFound />}
