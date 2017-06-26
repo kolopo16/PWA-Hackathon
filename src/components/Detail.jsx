@@ -65,7 +65,6 @@ class Detail extends Component {
               <img className='detail-photo' src={photo.getUrl({maxHeight: 480})} alt={i}/>
             </div>
           )
-          // console.log(photo.getUrl({maxWidth: 640}), i);
         })
       )
     }

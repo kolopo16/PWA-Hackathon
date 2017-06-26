@@ -7,6 +7,7 @@ import Card from './Card';
 import dataSearch from '../data/dataSearch.json';
 import SearchBox from './SearchBox';
 import GoogleServices from '../googleConfig';
+import NotFound from './NotFound';
 import HomeHero from '../assets/images/filipp-romanovskij.jpg';
 import FacebookLogo from '../assets/images/FacebookLogo.png';
 import FacebookLogined from '../assets/images/FacebookLogined.png';
@@ -77,7 +78,7 @@ class Home extends Component {
   generateCards(data) {
     if(data) {
       let returnCount = 0;
-      let returns = data.map((item) => {
+      let tempData = data.map((item) => {
         if(item.photos) {
           returnCount++;
           return (
@@ -91,20 +92,16 @@ class Home extends Component {
           )
         }
       })
-      if(returnCount!==0) {
-        return returns;
+      if (returnCount!==0) {
+        return tempData;
       } else {
         return (
-          <div className="not-found">
-            Not found
-          </div>
+          <NotFound />
         )
       }
     }
     return (
-      <div className="not-found">
-        Not found
-      </div>
+      <NotFound />
     )
   }
 
@@ -121,10 +118,7 @@ class Home extends Component {
           <div className="font-secondary">REVIEW YOU EXPERIENCES OF INTERESTING PLACES.</div>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: 60, justifyContent: 'center' }}>
-          {this.generateCards(this.state.data || dataSearch.results) || `
-            <div className="not-found">
-              Not found
-            </div>`}
+          {this.generateCards(this.state.data || dataSearch.results) || <NotFound />}
         </div>
       </div>
     )

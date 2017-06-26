@@ -28,7 +28,6 @@ class PlaceComments extends Component {
         this.setState({
           user: user.val(),
         });
-        console.log(this.state.user);
       });
     })
 
@@ -43,7 +42,6 @@ class PlaceComments extends Component {
   getReviewSnapshot(place, users) {
     place.child('reviews').on('child_added', snapshot => {
       let review = snapshot.val();
-      console.log(review, 'review');
 
       users.child(review.uid).once('value').then(user => {
         let data = {
@@ -72,7 +70,6 @@ class PlaceComments extends Component {
     this.setState({post: ''});
   }
   generatePlaceComments(comments) {
-    console.log(comments, 'kool');
     if(comments) {
       return (
         comments.map((comment, i) => {
