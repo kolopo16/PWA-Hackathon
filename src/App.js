@@ -8,10 +8,6 @@ import Home from './components/Home';
 import Detail from './components/Detail';
 
 class App extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <Router>

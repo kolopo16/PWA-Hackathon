@@ -10,7 +10,7 @@ class DetailDesc extends Component {
     this.state = {
       desc: '',
       isOpened: false,
-      isAdm: false,
+      isLogined: false,
     }
 
     this.database = null;
@@ -21,12 +21,11 @@ class DetailDesc extends Component {
 
     const currentUser = firebaseObj.GetCurrentUser();
     currentUser.then(() => {
-      this.setState({isAdm: true});
+      this.setState({isLogined: true});
     })
 
     this.database = firebaseObj.firebase.database().ref('/places/' + this.props.id);
     this.getSnapshot();
-
   }
 
   getSnapshot() {
@@ -46,7 +45,7 @@ class DetailDesc extends Component {
   }
 
   handleChange(e) {
-    this.setState({desc: e.target.value});
+    this.setState({ desc: e.target.value });
   }
 
   toggleEdit() {
@@ -59,16 +58,17 @@ class DetailDesc extends Component {
   }
 
   render() {
-    const { isOpened, desc, isAdm } = this.state;
+    const { isOpened, desc, isLogined } = this.state;
     return (
       <div>
         <div className={`${!isOpened ? 'showing' : 'hiding'}`}>
           {desc}
           <a onClick={() => this.toggleEdit()}
-             className={`${isAdm ? 'showing' : 'hiding'}`} style={{ color: 'red' }}> Edit Detail</a>
+            className={`${isLogined ? 'showing' : 'hiding'}`}
+            style={{ color: 'red' }}> Edit Detail
+          </a>
         </div>
-
-        <div className={`${isOpened && isAdm ? 'showing' : 'hiding'} editor`}>
+        <div className={`${isOpened && isLogined ? 'showing' : 'hiding'} editor`}>
           <textarea onChange={(e) => this.handleChange(e)} value={`${desc || ''}`} >-</textarea>
           <button onClick={() => this.saveDescEdit()}>Save</button>
           <button onClick={() => this.cancelEdit()}>Cancel</button>

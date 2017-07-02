@@ -10,7 +10,6 @@ class SearchBox extends Component {
     };
   }
 
-
   onInputChange(e) {
     this.setState({ keywords: e.target.value })
     if (e.charCode === 13) {

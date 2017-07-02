@@ -7,7 +7,6 @@ import GoogleServices from '../googleConfig';
 import RatingBar from './RatingBar';
 
 class Detail extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -19,38 +18,35 @@ class Detail extends Component {
     const services = new GoogleServices().service;
     const googlestatus = new GoogleServices().status;
 
-    services.getDetails({
-      placeId: this.props.match.params.id
-    }, (place, status) => {
-      (status !== googlestatus.OK) || this.setState({ data: place })
-    })
-  }
+    services.getDetails({ placeId: this.props.match.params.id },
+      (place, status) => {
+        (status !== googlestatus.OK) || this.setState({ data: place })
+      })
+    }
 
   generateReviewCard(reviews) {
     if(reviews) {
       return (
-        reviews.map((review, i) => {
-          return (
-            <div key={i} className={`${ i%2 || 'odd' } layout-card-detail pull-left`}>
-              <div className="card-detail">
-                <div className="card-profile-photo">
-                  <img src={review.profile_photo_url} alt={review.author_name} />
-                </div>
-                <div className="card-author-name">
-                  {review.author_name}
-                </div>
-                <div className="card-time">
-                  <RatingBar rating={review.rating}/>
-                  {review.relative_time_description}
-                </div>
-                <div className="card-text">
-                  <div className="text-emphasize">''</div>
-                  <div className="text-simple">{review.text}</div>
-                </div>
+        reviews.map((review, i) => (
+          <div key={i} className={`${ i%2 || 'odd' } layout-card-detail pull-left`}>
+            <div className="card-detail">
+              <div className="card-profile-photo">
+                <img src={review.profile_photo_url} alt={review.author_name} />
+              </div>
+              <div className="card-author-name">
+                {review.author_name}
+              </div>
+              <div className="card-time">
+                <RatingBar rating={review.rating}/>
+                {review.relative_time_description}
+              </div>
+              <div className="card-text">
+                <div className="text-emphasize">''</div>
+                <div className="text-simple">{review.text}</div>
               </div>
             </div>
-          )
-        })
+          </div>
+        ))
       )
     }
   }
@@ -58,19 +54,17 @@ class Detail extends Component {
   generatePhotos(photos) {
     if(photos) {
       return (
-        photos.map((photo,i) => {
-          return (
-            <div key={i} style={{ display: 'inline-block' }} >
-              <img className='detail-photo' src={photo.getUrl({maxHeight: 480})} alt={i}/>
-            </div>
-          )
-        })
+        photos.map((photo,i) => (
+          <div key={i} style={{ display: 'inline-block' }} >
+            <img className='detail-photo' src={photo.getUrl({maxHeight: 480})} alt={i}/>
+          </div>
+        ))
       )
     }
   }
 
   generateDetail(data) {
-    if(data){
+    if (data){
       return (
         <div>
           <div className="detail-header">

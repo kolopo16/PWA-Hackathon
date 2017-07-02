@@ -15,9 +15,7 @@ class FirebaseConfig {
     if(!firebase.apps.length){
       firebase.initializeApp(config);
     }
-
     this.firebase = firebase;
-    // this.adm = ['fGOO9EyEbEWSaqejwup8iRxxEy53'];
   }
 
   GetCurrentUser() {

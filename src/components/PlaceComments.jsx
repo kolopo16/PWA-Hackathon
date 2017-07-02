@@ -13,7 +13,6 @@ class PlaceComments extends Component {
       user: {},
       post: null,
     }
-
     this.database = null;
   }
 
@@ -30,9 +29,7 @@ class PlaceComments extends Component {
         });
       });
     })
-
     this.getReviewSnapshot(this.place, this.users);
-
   }
 
   handleChange(e) {
@@ -56,7 +53,6 @@ class PlaceComments extends Component {
   }
 
   PostComment() {
-    // let postCount = 0;
     let comment = {
       comment: this.state.post,
       uid: this.state.user.uid,
@@ -64,7 +60,6 @@ class PlaceComments extends Component {
     this.place.child('reviews').push(comment).then(() => {
       this.setState({post: null});
     });
-
   }
   ClearComment() {
     this.setState({post: ''});
