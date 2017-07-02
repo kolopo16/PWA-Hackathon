@@ -65,6 +65,7 @@ class Detail extends Component {
 
   generateDetail(data) {
     if (data){
+      const placeID = this.props.match.params.id;
       return (
         <div>
           <div className="detail-header">
@@ -73,7 +74,7 @@ class Detail extends Component {
             Rating: {data.rating}
           </div>
           <div className="detail-desc">
-            <DetailDesc id={this.props.match.params.id}/>
+            <DetailDesc id={placeID}/>
           </div>
           <div className="detail-address">{data.formatted_address}</div>
           <br/>
@@ -85,7 +86,7 @@ class Detail extends Component {
               <div style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBottom: 19, marginTop: 19 }}>Google Reviews</div>
               {this.generateReviewCard(data.reviews)}
             </div>
-            <PlaceComments id={this.props.match.params.id}/>
+            <PlaceComments id={placeID}/>
           </div>
         </div>
       )

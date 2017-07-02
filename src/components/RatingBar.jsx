@@ -10,6 +10,7 @@ class RatingBar extends Component {
     }
     return star;
   }
+
   render() {
     const { rating } = this.props;
     return (

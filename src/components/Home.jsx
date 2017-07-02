@@ -96,7 +96,6 @@ class Home extends Component {
       if (returnCount!==0) {
         return tempData;
       }
-      return ( <NotFound /> );
     }
     return ( <NotFound /> );
   }
