@@ -28,6 +28,7 @@ class SearchBox extends Component {
       <div className="search-box">
         <img style={{ position: 'absolute', width: 25, top: 17 }}
           src={MagnifyingGlass}
+          alt='magnifying-glass'
         />
         <label className="search-label">Search all reviewes !</label>
         <input

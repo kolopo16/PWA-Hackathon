@@ -3,11 +3,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FirebaseConfig from '../firebaseConfig';
 
-class PlaceComments extends Component {
+const headerText = {
+  fontSize: '1.5em',
+  display: 'inline-block',
+  borderBottom: '1px dotted #000',
+  width: '100%',
+  margin: '19px 0px'
+}
 
+class PlaceComments extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       data: [],
       user: {},
@@ -33,7 +39,7 @@ class PlaceComments extends Component {
   }
 
   handleChange(e) {
-    this.setState({post: e.target.value});
+    this.setState({ post: e.target.value });
   }
 
   getReviewSnapshot(place, users) {
@@ -58,33 +64,35 @@ class PlaceComments extends Component {
       uid: this.state.user.uid,
     }
     this.place.child('reviews').push(comment).then(() => {
-      this.setState({post: null});
+      this.setState({ post: '' });
     });
   }
+
   ClearComment() {
-    this.setState({post: ''});
+    this.setState({ post: '' });
   }
-  generatePlaceComments(comments) {
+
+  generateComments(comments) {
     if(comments) {
       return (
-        comments.map((comment, i) => {
-          return (
-            <div key={i} className={`${ i%2 || 'odd' } layout-card-detail pull-left`}>
-              <div className="card-detail">
-                <div className="card-profile-photo">
-                  <img style={{ borderRadius: '50%' }} src={comment.user.photoURL} alt={comment.user.displayName} />
-                </div>
-                <div className="card-author-name">
-                  {comment.user.displayName}
-                </div>
-                <div className="card-text">
-                  <div className="text-emphasize">''</div>
-                  <div className="text-simple">{comment.comment}</div>
-                </div>
+        comments.map((comment, i) => (
+          <div key={i} className={`${ i % 2 || 'odd' } layout-card-detail pull-left`}>
+            <div className="card-detail">
+              <div className="card-profile-photo">
+                <img style={{ borderRadius: '50%' }}
+                  src={comment.user.photoURL} alt={comment.user.displayName}
+                />
+              </div>
+              <div className="card-author-name">
+                {comment.user.displayName}
+              </div>
+              <div className="card-text">
+                <div className="text-emphasize">''</div>
+                <div className="text-simple">{comment.comment}</div>
               </div>
             </div>
-          )
-        })
+          </div>
+        ))
       )
     }
     return <div> No review </div>
@@ -95,16 +103,20 @@ class PlaceComments extends Component {
     return (
       <div>
         <div style={{ display: 'inline-block', width: '100%' }}>
-          <div style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBottom: 19, marginTop: 19 }}>UrView Reviews</div>
-          <div style={{ paddingBottom: 20 }}>{this.generatePlaceComments(data)}</div>
+          <div style={headerText}>UrView Reviews</div>
+          <div style={{ paddingBottom: 20 }}>{this.generateComments(data)}</div>
         </div>
-        <div className={`${user.email ? 'showing' : 'hiding'} add-review`} style={{ width: '100%' }}>
-          <div className="review-user-photo">
+        <div className={`${user.email ? 'showing' : 'hiding'}`} style={{ width: '100%' }}>
+          <div>
             <img src={user.photoURL} alt={user.displayName} />
-            <div className="review-user-name">{`${user.displayName} says:`}</div>
+            <div>{`${user.displayName} says:`}</div>
           </div>
-          <textarea placeholder="ADD COMMENT.." onChange={(e) => this.handleChange(e)} value={`${post || ''}`} ></textarea>
-          <div className="review-user-input" style={{ display: 'flex' }}>
+          <textarea
+            placeholder="ADD COMMENT.."
+            onChange={(e) => this.handleChange(e)}
+            value={`${post || ''}`} >
+          </textarea>
+          <div style={{ display: 'flex' }}>
             <button className="btn btn-primary" onClick={() => this.PostComment()}>POST</button>
             <button className="btn btn-secondary" onClick={() => this.ClearComment()}>CLEAR</button>
           </div>

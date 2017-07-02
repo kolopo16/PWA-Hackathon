@@ -16,8 +16,11 @@ const styles = {
   stylesBtnFB: {
     position: 'absolute', right: 20, top: 15, width: 21, cursor: 'pointer'
   },
-  LoginLable: {
+  actionLable: {
     position: 'absolute', top: 35, right: 11, fontSize: 12, fontWeight: 'bold'
+  },
+  blockCard: {
+    display: 'flex', flexWrap: 'wrap', marginTop: 60, justifyContent: 'center'
   }
 }
 
@@ -42,9 +45,7 @@ class Home extends Component {
     const services = new GoogleServices().service;
     const googlestatus = new GoogleServices().status;
 
-    services.textSearch({
-      query: v
-    }, (places, status) => {
+    services.textSearch({ query: v }, (places, status) => {
       (status !== googlestatus.OK) || this.setState({ data: places })
     })
   }
@@ -63,15 +64,15 @@ class Home extends Component {
     if (this.state.email) {
       return (
         <div>
-          <img src={FacebookLogined} style={styles.stylesBtnFB} onClick={() => {this.handleSignOut()}} />
-          <div style={styles.LoginLable}>LOGOUT</div>
+          <img src={FacebookLogined} alt='fb-logout' style={styles.stylesBtnFB} onClick={() => {this.handleSignOut()}} />
+          <div style={styles.actionLable}>LOGOUT</div>
         </div>
       );
     }
     return (
       <div>
-        <img src={FacebookLogo} style={styles.stylesBtnFB} onClick={() => this.handleSignIn()} />
-        <div style={styles.LoginLable}>LOGIN</div>
+        <img src={FacebookLogo} alt='fb-login' style={styles.stylesBtnFB} onClick={() => {this.handleSignIn()}} />
+        <div style={styles.actionLable}>LOGIN</div>
       </div>
     );
   }
@@ -80,20 +81,22 @@ class Home extends Component {
     if (data) {
       let returnCount = 0;
       let tempData = data.map((item) => {
-        if(item.photos) {
+        if (item.photos) {
           returnCount++;
           return (
             <Link to={`/detail/${item.place_id}`} key={item.place_id}>
               <Card
                 name={item.name}
-                photo={(item.photos[0].raw_reference) ? item.photos[0].raw_reference.fife_url : item.photos[0].getUrl({maxWidth: 640})}
+                photo={(item.photos[0].raw_reference) ?
+                  item.photos[0].raw_reference.fife_url :
+                  item.photos[0].getUrl({ maxWidth: 640 })}
                 address={item.formatted_address}
               />
             </Link>
           )
         }
       })
-      if (returnCount!==0) {
+      if (returnCount !== 0) {
         return tempData;
       }
       return ( <NotFound /> );
@@ -109,11 +112,11 @@ class Home extends Component {
           {this.LoginWithFB()}
         </div>
         <div className="home-hero" style={{ height: window.innerHeight }}>
-          <img src={HomeHero} />
+          <img alt='home-hero' src={HomeHero} />
           <div className="font-primary">UrView</div>
           <div className="font-secondary">REVIEW YOUR EXPERIENCES OF INTERESTING PLACES.</div>
         </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: 60, justifyContent: 'center' }}>
+        <div style={styles.blockCard}>
           {this.generateCards(this.state.data || dataSearch.results) || <NotFound />}
         </div>
       </div>
