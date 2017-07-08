@@ -18,6 +18,11 @@ a {
   color: #000;
   text-decoration: none;
 }
+.rating-img {
+  width: 14px;
+  float: left;
+  padding-top: 5px;
+}
 .styles-btn-fb {
   position: absolute;
   right: 20px;

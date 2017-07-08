@@ -6,7 +6,7 @@ class RatingBar extends Component {
   renderRate(rate) {
     let star = [];
     for(let i = 1; i <= Number(rate); i += 1) {
-      star.push(<img key={i} src={Star} alt='rating' style={{ width: 14, float: 'left', paddingTop: 5}} />);
+      star.push(<img key={i} src={Star} alt='rating' className="rating-img"/>);
     }
     return star;
   }
