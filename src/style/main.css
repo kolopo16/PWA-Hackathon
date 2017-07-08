@@ -18,6 +18,34 @@ a {
   color: #000;
   text-decoration: none;
 }
+.styles-btn-fb {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  width: 21px;
+  cursor: pointer
+}
+.actionLable {
+  position: absolute;
+  top: 35px;
+  right: 11px;
+  font-size: 12px;
+  font-weight: bold
+}
+.blockCard {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 60px;
+  justify-content: center
+}
+.header {
+  font-size: 1.5em;
+  display: inline-block;
+  border-bottom: 1px dotted #000;
+  width: 100%;
+  margin-bottom: 19px;
+  margin-top: 19px;
+}
 .circle-1 {
   position: absolute;
   top: 27px;
@@ -76,6 +104,14 @@ a {
   color: #151515;
   border: 1px solid #151515;
 }
+.img-search {
+  position: absolute;
+  width: 25px;
+  top: 17px;
+}
+.font-red {
+  color: red;
+}
 textarea {
   width: 100%;
   border: 1px solid #000;
@@ -83,6 +119,9 @@ textarea {
   height: 104px;
   outline: none;
   font-size: 16px;
+}
+.img-user-comment {
+  border-radius: 50%;
 }
 .editor {
   width: 100%;
@@ -146,6 +185,16 @@ textarea {
   height: 180px;
   margin-bottom: 15px;
 }
+.spacing {
+  padding-bottom: 20px;
+}
+.header-text {
+  font-size: 1.5em;
+  display: inline-block;
+  border-bottom: 1px dotted #000;
+  width: 100%;
+  margin: 19px 0px;
+}
 header img {
   width: 100%;
   height: 100%;
@@ -188,6 +237,11 @@ header img {
   width: 85%;
 }
 /* Component:: BackToTopButton */
+.section-detail {
+  display: inline-block;
+  margin-top: 60px;
+  width: 100%;
+}
 .search-box {
   padding: 0 17px;
 }
@@ -383,7 +437,9 @@ span::after {
   animation-delay: 1.5s / 3;
   left: 24px;
 }
-
+.photo {
+  display: inline-block;
+}
 .detail-photo {
   /*width: calc(100% - 10px);*/
   height: 200px;
@@ -391,7 +447,9 @@ span::after {
   padding-right: 9px;
   display: inline-block;
 }
-
+.btn-bar {
+  display: flex;
+}
 .detail-photos {
   display: flex;
   flex-wrap: wrap;

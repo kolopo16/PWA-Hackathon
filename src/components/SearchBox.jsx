@@ -26,7 +26,7 @@ class SearchBox extends Component {
   render() {
     return (
       <div className="search-box">
-        <img style={{ position: 'absolute', width: 25, top: 17 }}
+        <img className="img-search"
           src={MagnifyingGlass}
           alt='magnifying-glass'
         />

@@ -3,14 +3,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FirebaseConfig from '../firebaseConfig';
 
-const headerText = {
-  fontSize: '1.5em',
-  display: 'inline-block',
-  borderBottom: '1px dotted #000',
-  width: '100%',
-  margin: '19px 0px'
-}
-
 class PlaceComments extends Component {
   constructor(props) {
     super(props);
@@ -79,7 +71,7 @@ class PlaceComments extends Component {
           <div key={i} className={`${ i % 2 || 'odd' } layout-card-detail pull-left`}>
             <div className="card-detail">
               <div className="card-profile-photo">
-                <img style={{ borderRadius: '50%' }}
+                <img className="img-user-comment"
                   src={comment.user.photoURL} alt={comment.user.displayName}
                 />
               </div>
@@ -102,11 +94,11 @@ class PlaceComments extends Component {
     const { user, data, post } = this.state;
     return (
       <div>
-        <div style={{ display: 'inline-block', width: '100%' }}>
-          <div style={headerText}>UrView Reviews</div>
-          <div style={{ paddingBottom: 20 }}>{this.generateComments(data)}</div>
+        <div className="card-text">
+          <div className="header-text">UrView Reviews</div>
+          <div className="spacing">{this.generateComments(data)}</div>
         </div>
-        <div className={`${user.email ? 'showing' : 'hiding'}`} style={{ width: '100%' }}>
+        <div className={`${user.email ? 'showing' : 'hiding'} editor`}>
           <div>
             <img src={user.photoURL} alt={user.displayName} />
             <div>{`${user.displayName} says:`}</div>
@@ -116,7 +108,7 @@ class PlaceComments extends Component {
             onChange={(e) => this.handleChange(e)}
             value={`${post || ''}`} >
           </textarea>
-          <div style={{ display: 'flex' }}>
+          <div className="btn-bar">
             <button className="btn btn-primary" onClick={() => this.PostComment()}>POST</button>
             <button className="btn btn-secondary" onClick={() => this.ClearComment()}>CLEAR</button>
           </div>

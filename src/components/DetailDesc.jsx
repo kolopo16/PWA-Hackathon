@@ -64,8 +64,7 @@ class DetailDesc extends Component {
         <div className={`${!isOpened ? 'showing' : 'hiding'}`}>
           {desc}
           <a onClick={() => this.toggleEdit()}
-            className={`${isLogined ? 'showing' : 'hiding'}`}
-            style={{ color: 'red' }}> Edit Detail
+            className={`${isLogined ? 'showing' : 'hiding'} font-red`}> Edit Detail
           </a>
         </div>
         <div className={`${isOpened && isLogined ? 'showing' : 'hiding'} editor`}>

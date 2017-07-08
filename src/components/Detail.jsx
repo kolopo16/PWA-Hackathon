@@ -55,7 +55,7 @@ class Detail extends Component {
     if(photos) {
       return (
         photos.map((photo,i) => (
-          <div key={i} style={{ display: 'inline-block' }} >
+          <div key={i} className="photo">
             <img className='detail-photo' src={photo.getUrl({maxHeight: 480})} alt={i}/>
           </div>
         ))
@@ -82,7 +82,7 @@ class Detail extends Component {
           </div>
           <div className="detail-reviews">
             <div className="review-card">
-              <div style={{ fontSize: '1.5em', display: 'inline-block', borderBottom: '1px dotted #000', width: '100%', marginBottom: 19, marginTop: 19 }}>Google Reviews</div>
+              <div className="header">Google Reviews</div>
               {this.generateReviewCard(data.reviews)}
             </div>
             <PlaceComments id={this.props.match.params.id}/>
@@ -102,7 +102,7 @@ class Detail extends Component {
           <div className="circle-1"></div>
           <div className="circle-2"></div>
         </div>
-        <div style={{ display: 'inline-block', marginTop: 60, width: '100%' }}>
+        <div className="section-detail">
           {this.generateDetail(this.state.data)}
         </div>
       </div>

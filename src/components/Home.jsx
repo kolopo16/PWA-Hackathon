@@ -12,18 +12,6 @@ import HomeHero from '../assets/images/filipp-romanovskij.jpg';
 import FacebookLogo from '../assets/images/FacebookLogo.png';
 import FacebookLogined from '../assets/images/FacebookLogined.png';
 
-const styles = {
-  stylesBtnFB: {
-    position: 'absolute', right: 20, top: 15, width: 21, cursor: 'pointer'
-  },
-  actionLable: {
-    position: 'absolute', top: 35, right: 11, fontSize: 12, fontWeight: 'bold'
-  },
-  blockCard: {
-    display: 'flex', flexWrap: 'wrap', marginTop: 60, justifyContent: 'center'
-  }
-}
-
 class Home extends Component {
 
   constructor() {
@@ -64,15 +52,15 @@ class Home extends Component {
     if (this.state.email) {
       return (
         <div>
-          <img src={FacebookLogined} alt='fb-logout' style={styles.stylesBtnFB} onClick={() => {this.handleSignOut()}} />
-          <div style={styles.actionLable}>LOGOUT</div>
+          <img src={FacebookLogined} alt='fb-logout' className="styles-btn-fb" onClick={() => {this.handleSignOut()}} />
+          <div className="actionLable">LOGOUT</div>
         </div>
       );
     }
     return (
       <div>
-        <img src={FacebookLogo} alt='fb-login' style={styles.stylesBtnFB} onClick={() => {this.handleSignIn()}} />
-        <div style={styles.actionLable}>LOGIN</div>
+        <img src={FacebookLogo} alt='fb-login' className="styles-btn-fb" onClick={() => {this.handleSignIn()}} />
+        <div className="actionLable">LOGIN</div>
       </div>
     );
   }
@@ -116,7 +104,7 @@ class Home extends Component {
           <div className="font-primary">UrView</div>
           <div className="font-secondary">REVIEW YOUR EXPERIENCES OF INTERESTING PLACES.</div>
         </div>
-        <div style={styles.blockCard}>
+        <div className="blockCard">
           {this.generateCards(this.state.data || dataSearch.results) || <NotFound />}
         </div>
       </div>
