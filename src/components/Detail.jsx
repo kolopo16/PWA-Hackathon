@@ -1,17 +1,14 @@
-/* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DetailDesc from './DetailDesc';
 import PlaceComments from './PlaceComments';
-import GoogleServices from '../googleConfig';
+import GoogleServices from '../config/googleConfig';
 import RatingBar from './RatingBar';
 
 class Detail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-    }
+
+  state = {
+    data: null,
   }
 
   componentDidMount() {
@@ -56,7 +53,7 @@ class Detail extends Component {
       return (
         photos.map((photo,i) => (
           <div key={i} className="photo">
-            <img className='detail-photo' src={photo.getUrl({maxHeight: 480})} alt={i}/>
+            <img className='detail-photo' src={photo.getUrl({ maxHeight: 480 })} alt={i} />
           </div>
         ))
       )
@@ -111,7 +108,12 @@ class Detail extends Component {
   }
 }
 
+Detail.defaultProps = {
+  match: [],
+}
+
 Detail.propTypes = {
   match: PropTypes.object,
 }
+
 export default Detail

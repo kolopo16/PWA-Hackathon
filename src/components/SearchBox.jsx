@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import MagnifyingGlass from '../assets/images/Search.png';
 
 class SearchBox extends Component {
-  constructor() {
-    super();
-    this.state = {
-      keywords: '',
-    };
-  }
+
+  state = {
+    keywords: '',
+  };
 
   onInputChange(e) {
     this.setState({ keywords: e.target.value })
@@ -26,7 +24,8 @@ class SearchBox extends Component {
   render() {
     return (
       <div className="search-box">
-        <img className="img-search"
+        <img
+          className="img-search"
           src={MagnifyingGlass}
           alt='magnifying-glass'
         />

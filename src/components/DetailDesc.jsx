@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import FirebaseConfig from '../firebaseConfig';
+import FirebaseConfig from '../config/firebaseConfig';
 
 class DetailDesc extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      desc: '',
-      isOpened: false,
-      isLogined: false,
-    }
-
-    this.database = null;
+  state = {
+    desc: '',
+    isOpened: false,
+    isLogined: false,
   }
 
   componentWillMount() {
@@ -77,8 +71,12 @@ class DetailDesc extends Component {
   }
 }
 
+DetailDesc.defaultProps = {
+  id: ''
+};
+
 DetailDesc.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
 };
 
 export default DetailDesc;

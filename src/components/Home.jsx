@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import {
   Link
 } from 'react-router-dom';
-import FirebaseConfig from '../firebaseConfig';
+import FirebaseConfig from '../config/firebaseConfig';
 import Card from './Card';
 import dataSearch from '../data/dataSearch.json';
 import SearchBox from './SearchBox';
-import GoogleServices from '../googleConfig';
+import GoogleServices from '../config/googleConfig';
 import NotFound from './NotFound';
 import HomeHero from '../assets/images/filipp-romanovskij.jpg';
 import FacebookLogo from '../assets/images/FacebookLogo.png';
@@ -14,12 +14,9 @@ import FacebookLogined from '../assets/images/FacebookLogined.png';
 
 class Home extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      data: '',
-    };
-  }
+  state = {
+    data: '',
+  };
 
   componentDidMount() {
     const firebaseObj = new FirebaseConfig();
@@ -94,6 +91,7 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <h1>{window.config.MY_KEY}</h1>
         <div className="topbar">
           <SearchBox onInputChange={v => this.getValue(v)}/>
           {this.LoginWithFB()}

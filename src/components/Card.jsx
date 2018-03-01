@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends Component {
+
   render() {
     const { photo, name, address } = this.props;
     return (
@@ -17,6 +18,12 @@ class Card extends Component {
       </div>
     );
   }
+}
+
+Card.defaultProps = {
+  name: '',
+  photo: '',
+  address: '',
 }
 
 Card.propTypes = {

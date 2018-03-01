@@ -1,17 +1,14 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import FirebaseConfig from '../firebaseConfig';
+import FirebaseConfig from '../config/firebaseConfig';
 
 class PlaceComments extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      user: {},
-      post: null,
-    }
-    this.database = null;
+
+  state = {
+    data: [],
+    user: {},
+    post: null,
   }
 
   componentDidMount() {
@@ -106,8 +103,8 @@ class PlaceComments extends Component {
           <textarea
             placeholder="ADD COMMENT.."
             onChange={(e) => this.handleChange(e)}
-            value={`${post || ''}`} >
-          </textarea>
+            value={`${post || ''}`}
+          />
           <div className="btn-bar">
             <button className="btn btn-primary" onClick={() => this.PostComment()}>POST</button>
             <button className="btn btn-secondary" onClick={() => this.ClearComment()}>CLEAR</button>
@@ -117,6 +114,10 @@ class PlaceComments extends Component {
     );
   }
 }
+
+PlaceComments.defaultProps = {
+  id: ''
+};
 
 PlaceComments.propTypes = {
   id: PropTypes.string,
